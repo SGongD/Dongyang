@@ -1,0 +1,69 @@
+CREATE DATABASE `MovieSite` /*!40100 DEFAULT CHARACTER SET utf8 */;
+
+use MovieSite;
+
+CREATE TABLE `memberMovie` (
+ 	`memberid` varchar(20) NOT NULL,
+	`password` varchar(20) NOT NULL,
+ 	`name` varchar(20) NOT NULL,
+ 	`email` varchar(20) DEFAULT NULL,
+ 	`tel` varchar(20) NOT NULL,
+ 	`memberRank` varchar(10) NOT NULL,
+ 	PRIMARY KEY (`memberid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `movie` (
+	`movieRank` Int(10) NOT NULL, 
+	`movieName` varchar(30) NOT NULL,
+	`movieSalesShare` float(4) NOT NULL,
+	`movieCd` varchar(30) NOT NULL,
+	`salesAmt` Int(15) NOT NULL,
+	`audiCnt` Int(10) NOT NULL,
+	`audiAcc` Int(10) NOT NULL,
+	`rankInten` Int(5) NOT NULL,
+	`rankOldAndNew` varchar(5) NOT NULL,
+	PRIMARY KEY (`movieCd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `community` (
+	`cmRank` Int(20) NOT NULL,
+	`cmTitle` varchar(50) NOT NULL,
+   	`cmID` varchar(20) NOT NULL,
+   	`cmDate` datetime NOT NULL,
+   	`cmContent` varchar(2048) NOT NULL,
+   	`cmAvailable` Int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `AdminWrite` (
+	`adminRank` Int(20) NOT NULL,
+    	`adminTitle` varchar(50) NOT NULL,
+   	`adminID` varchar(20) NOT NULL,
+	`adminDate` datetime NOT NULL,
+	`adminContent` varchar(2048) NOT NULL,
+   	`adminAvailable` Int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `mtTBL` (
+	`mtNum` Int(10) NOT NULL,
+	`mtDate` varchar(15) NOT NULL,
+	`mtMovie` varchar(30) NOT NULL,
+	`mtCinema` varchar(30) NOT NULL,
+	`mtTimeline` varchar(15) NOT NULL,
+	`mtPeople` Int(5) NOT NULL,
+	`mtTotalPeople` Int(10) NOT NULL,
+	PRIMARY KEY (`mtNum`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `ticketTBL` (
+	`ticketNum` Int(10) NOT NULL auto_increment,
+	`ticketMovie` varchar(30) NOT NULL,
+   	`ticketCinema` varchar(30) NOT NULL,
+	`ticketTimeline` varchar(15) NOT NULL,
+	`ticketDate` varchar(30) NOT NULL,
+	`ticketReservator` varchar(20) NOT NULL,
+   	`ticketPeople` Int(5) NOT NULL,
+	PRIMARY KEY (`ticketNum`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `AdminWrite` MODIFY COLUMN `adminRank` Int(20) PRIMARY KEY;
+ALTER TABLE `community` MODIFY COLUMN `cmRank` Int(20) PRIMARY KEY;
